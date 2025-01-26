@@ -30,7 +30,6 @@ class User(db.Model,UserMixin):
         return f"Username {self.username}"
     
 class Blog(db.Model):
-    __tablename__='blogs'
     users=db.relationship(User)
 
     id=db.Column(db.Integer,primary_key=True)
