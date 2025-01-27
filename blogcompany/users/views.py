@@ -3,7 +3,7 @@ from flask_login import current_user,login_required,logout_user,login_user
 from blogcompany import db
 from blogcompany.models import User,BlogPost
 from blogcompany.users.forms import RegistrationForm,LoginForm,UpdateUserForm
-from blogcompany.users.picture_handler import add_profile_pic
+from blogcompany.users.picture_loader import add_profile_pic
 
 
 users=Blueprint('users',__name__)

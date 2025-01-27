@@ -1,17 +1,17 @@
-from blogcompany.models import db,login_manager
+from blogcompany import db,login_manager
 from werkzeug.security import generate_password_hash,check_password_hash
 from flask_login import UserMixin
-from datetime import datetime
+from datetime import datetime,timezone
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
 class User(db.Model,UserMixin):
-    _tablename__='users'
-
+    __tablename__='users'
+    
     id=db.Column(db.Integer,primary_key=True)
-    profile_image=db.Column(db.String(20),nullable=False,default='default_profile.png')
+    profile_image=db.Column(db.String(20),nullable=False,default='default_profile.jpg')
     email=db.Column(db.String(64),unique=True,index=True)
     username=db.Column(db.String(64),unique=True,index=True)
     password_hash=db.Column(db.String(128))
@@ -29,12 +29,13 @@ class User(db.Model,UserMixin):
     def __repr__(self):
         return f"Username {self.username}"
     
-class Blog(db.Model):
+class BlogPost(db.Model):
+    __tablename__ = 'blog_posts'
     users=db.relationship(User)
 
     id=db.Column(db.Integer,primary_key=True)
     user_id=db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
-    date=db.Column(db.DateTime,nullable=False,default=datetime.timezone.utc)
+    date=db.Column(db.DateTime,nullable=False,default=datetime.now(timezone.utc))
     title=db.Column(db.String(140),nullable=False)
     text=db.Column(db.Text,nullable=False)
 
