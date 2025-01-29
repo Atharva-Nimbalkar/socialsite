@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-  <div class="container">
-    <form class="form-group" method="POST">
+  <div class="container mt-4">
+    <h1>Create a New Post</h1>
+    <form method="POST" enctype="multipart/form-data">
       {{form.hidden_tag()}}
-
       <div class="form-group">
         {{form.title.label(class="form-control-label")}}
         {{form.title(class="form-control form-control-lg")}}
@@ -15,7 +15,6 @@
       <div class="form-group">
         {{form.submit(class="btn btn-outline-info")}}
       </div>
-
     </form>
   </div>
 {% endblock %}
