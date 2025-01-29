@@ -24,8 +24,10 @@ login_manager.login_view='users.login'#function name of the route that handles l
 
 from blogcompany.core.views import core
 from blogcompany.error_pages.handlers import error_pages
+from blogcompany.blog_posts.views import blog_posts
 from blogcompany.users.views import users
 
 app.register_blueprint(core)
 app.register_blueprint(users)
+app.register_blueprint(blog_posts)
 app.register_blueprint(error_pages)
