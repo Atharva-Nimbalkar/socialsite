@@ -22,10 +22,10 @@ venv.bak/
 *.dbf
 *.mdb
 *.pdb
-*.sqlite
+# *.sqlite
 *.sqlite3
 
 # migrations
-*/migrations/*
-**/migrations
-**/migrations/__init__.py
+# */migrations/*
+# **/migrations
+# **/migrations/__init__.py
